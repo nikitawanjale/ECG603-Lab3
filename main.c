@@ -40,6 +40,6 @@ int main(void)
 		GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3,0x00);
 		SysCtlDelay(2000000);
 		//Change the sequence of LED blinking to 8,2,4 (Red, Green, Blue)
-		if(ui8PinData==8) {ui8PinData=2;} else {ui8PinData=ui8PinData*2;}
+		if(ui8PinData==2) {ui8PinData=8;} else {ui8PinData=ui8PinData/2;}
 	}
 }
