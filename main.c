@@ -24,8 +24,8 @@ Called automatically after the system and compiler pre-init sequences.
 *****************************************************************************/
 int main(void)
 {
-	//To set the clock frequency to be 40MHz.
-	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+	//To set the clock frequency to be 12.5MHz.
+	SysCtlClockSet(SYSCTL_SYSDIV_16|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	//Enable GPIO peripheral
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
