@@ -1,4 +1,5 @@
 /*
+Lab03-T03_a: Change the sequence of LED blinking
  * main.c
  */
 #include <stdint.h>
@@ -30,7 +31,7 @@ int main(void)
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
-	//create a while(1) loop to send a ì1î and ì0î to the selected GPIO pin, with an
+	//create a while(1) loop to send a ‚Äú1‚Äù and ‚Äú0‚Äù to the selected GPIO pin, with an
 	//equal delay between the two.
 	while(1)
 	{
@@ -38,6 +39,7 @@ int main(void)
 		SysCtlDelay(2000000);
 		GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3,0x00);
 		SysCtlDelay(2000000);
+		//Change the sequence of LED blinking to 8,2,4 (Red, Green, Blue)
 		if(ui8PinData==8) {ui8PinData=2;} else {ui8PinData=ui8PinData*2;}
 	}
 }
