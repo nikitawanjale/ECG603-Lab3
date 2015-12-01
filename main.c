@@ -1,4 +1,5 @@
 /*
+Lab03-T03_b Blink two LED at an instance and with a sequence.
  * main.c
  */
 #include <stdint.h>
@@ -14,7 +15,7 @@ initializes it to 2. This will be used to cycle through the three LEDs, lighting
 a time. Note that the C99 type is an 8-bit unsigned integer and that the variable name
 reflects this.
 ************************************************************/
-int ui8PinData=2;
+int ui8PinData=6;
 
 /*****************************************************************************
 Main function performs init and manages system.
@@ -23,14 +24,14 @@ Called automatically after the system and compiler pre-init sequences.
 *****************************************************************************/
 int main(void)
 {
-	//To set the clock frequency to be 40MHz.
-	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+	//To set the clock frequency to be 12.5MHz.
+	SysCtlClockSet(SYSCTL_SYSDIV_16|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	//Enable GPIO peripheral
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
-	//create a while(1) loop to send a ì1î and ì0î to the selected GPIO pin, with an
+	//create a while(1) loop to send a ‚Äú1‚Äù and ‚Äú0‚Äù to the selected GPIO pin, with an
 	//equal delay between the two.
 	while(1)
 	{
@@ -38,6 +39,7 @@ int main(void)
 		SysCtlDelay(2000000);
 		GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3,0x00);
 		SysCtlDelay(2000000);
-		if(ui8PinData==8) {ui8PinData=2;} else {ui8PinData=ui8PinData*2;}
+		//Change the ui8PinData value to 6,10,12 blink two LED at an instance
+		if(ui8PinData==6) {ui8PinData=10;} else if (ui8PinData==10) {ui8PinData=12;} else {ui8PinData=ui8PinData/2;}
 	}
 }
