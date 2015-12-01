@@ -1,4 +1,4 @@
-/*
+/*Lab03T03_a
  * main.c
  */
 #include <stdint.h>
@@ -30,7 +30,7 @@ int main(void)
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
 
-	//create a while(1) loop to send a ì1î and ì0î to the selected GPIO pin, with an
+	//create a while(1) loop to send a ‚Äú1‚Äù and ‚Äú0‚Äù to the selected GPIO pin, with an
 	//equal delay between the two.
 	while(1)
 	{
