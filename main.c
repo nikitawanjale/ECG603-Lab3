@@ -1,4 +1,7 @@
-/*Lab03T03_a
+/*
+Lab03-T02 Change the delay of the LED blink (approx. 0.5 sec) by changing the clock source and
+configuration – do not change the delay value – determine the CLK frequency – verify the delay
+to be approx 0.5 sec.
  * main.c
  */
 #include <stdint.h>
@@ -23,8 +26,8 @@ Called automatically after the system and compiler pre-init sequences.
 *****************************************************************************/
 int main(void)
 {
-	//To set the clock frequency to be 40MHz.
-	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
+	//To set the clock frequency to be 12.5MHz.
+	SysCtlClockSet(SYSCTL_SYSDIV_16|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	//Enable GPIO peripheral
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
@@ -35,9 +38,9 @@ int main(void)
 	while(1)
 	{
 		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1| GPIO_PIN_2| GPIO_PIN_3, ui8PinData);
-		SysCtlDelay(2000000);
+		SysCtlDelay(2000000);	//Each loop cycle is for 3 CPU cycles. Freq=12.5MHz, Delay=0.48seconds
 		GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3,0x00);
-		SysCtlDelay(2000000);
+		SysCtlDelay(2000000);	//Each loop cycle is for 3 CPU cycles. Freq=12.5MHz, Delay=0.48seconds
 		if(ui8PinData==8) {ui8PinData=2;} else {ui8PinData=ui8PinData*2;}
 	}
 }
